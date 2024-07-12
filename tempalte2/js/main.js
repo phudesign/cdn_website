@@ -192,31 +192,41 @@
    * Porfolio isotope and filter
    */
   window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+  let portfolioContainer = select('.portfolio-container');
+  if (portfolioContainer) {
+    let portfolioIsotope = new Isotope(portfolioContainer, {
+      itemSelector: '.portfolio-item'
+    });
+
+    let portfolioFilters = select('#portfolio-flters li', true);
+
+    // Function to handle filter click
+    const handleFilterClick = (e) => {
+      e.preventDefault();
+      portfolioFilters.forEach((el) => {
+        el.classList.remove('filter-active');
       });
+      e.currentTarget.classList.add('filter-active');
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+      portfolioIsotope.arrange({
+        filter: e.currentTarget.getAttribute('data-filter')
+      });
+      portfolioIsotope.on('arrangeComplete', () => {
+        AOS.refresh();
+      });
+    };
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+    // Add click event listener to all filter items
+    portfolioFilters.forEach((filter) => {
+      filter.addEventListener('click', handleFilterClick);
+    });
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
+    // Trigger click on the first filter item to show it by default
+    if (portfolioFilters.length > 0) {
+      portfolioFilters[0].click();
     }
-
-  });
+  }
+});
 
   /**
    * Initiate portfolio lightbox 
