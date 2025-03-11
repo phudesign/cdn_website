@@ -9,7 +9,7 @@
 
   /**
    * Easy selector helper function
-   */
+  
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -18,7 +18,22 @@
       return document.querySelector(el)
     }
   }
+ */
 
+const select = (el, all = false) => {
+  if (!el || typeof el !== "string" || el.trim() === "") {
+    console.error("Invalid selector:", el);
+    return all ? [] : null;
+  }
+
+  el = el.trim();
+  if (all) {
+    return [...document.querySelectorAll(el)];
+  } else {
+    return document.querySelector(el);
+  }
+};
+  
   /**
    * Easy event listener function
    */
