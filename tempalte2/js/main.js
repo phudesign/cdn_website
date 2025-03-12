@@ -252,7 +252,7 @@ const select = (el, all = false) => {
 
   /**
    * Portfolio details slider
-   */
+   
   new Swiper('.portfolio-details-slider', {
     speed: 400,
     loop: true,
@@ -266,7 +266,7 @@ const select = (el, all = false) => {
       clickable: true
     }
   });
-
+*/
   /**
    * Animation on scroll
   */
