@@ -198,6 +198,7 @@
   opacity: 1;
   top: 100%;
   visibility: visible;
+  width: inherit;
 }
 
 .navbar .dropdown .dropdown ul {
