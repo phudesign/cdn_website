@@ -182,10 +182,11 @@ const select = (el, all = false) => {
   /**
    * Initiate  glightbox 
    */
+  if (document.querySelector('.glightbox')) {
   const glightbox = GLightbox({
     selector: '.glightbox'
   });
-
+  }
   /**
    * Skills animation
    */
