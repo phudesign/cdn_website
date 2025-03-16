@@ -204,6 +204,7 @@
 .navbar .dropdown .dropdown ul {
   top: 0;
   left: calc(100% - 30px);
+  width: inherit;
   /*visibility: hidden;*/
 }
 
@@ -217,7 +218,7 @@
 @media (max-width: 1440px) {
   .navbar .dropdown .dropdown ul {
     left: -100%;
-    width: 100%;
+    width: inherit;
   }
   .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
